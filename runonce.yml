@@ -1,0 +1,9 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Print Name
+      command: echo Manoj
+      delegate_to: Node01
+    - name: EOT
+      command: echo EOT  

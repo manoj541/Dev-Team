@@ -1,0 +1,8 @@
+---
+- hosts: server
+  become: yes
+  tasks:
+    - name: Print Name
+      command: echo "{{myname}}"
+      register: output
+    - debug: var=output.stdout

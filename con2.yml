@@ -1,0 +1,13 @@
+---
+- hosts: server
+  vars:
+   epic: false 
+  tasks:
+    - name: EPIC
+      command: echo "this is certainly epic !"
+      when: epic
+    - name: NOT EPIC
+      command: echo "this certainly isn't epic!" 
+      when: not epic
+
+

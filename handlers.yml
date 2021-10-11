@@ -1,0 +1,14 @@
+---
+- hosts: server
+  become: yes
+  vars:
+    - server: httpd 
+  tasks:
+    - name: Install hpptd webserver
+      yum: name="{{server}}" state=present
+      notify: server httpd start
+    - name: Install Git
+      yum: name=git state=present
+  handlers:
+    - name: server httpd start
+      service: name='{{server}}' state=started

@@ -1,0 +1,8 @@
+---
+- hosts: server
+  become: yes
+  tasks:
+    - debug:
+        msg: "{{item}}"    
+      with_file:
+          - testfile     

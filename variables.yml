@@ -1,0 +1,21 @@
+---
+- hosts: server
+  become: yes
+  vars:
+    - server: httpd
+  tasks:
+    - name: Install Git
+      yum: name=git state=present
+    - name: Install hpptd webserver
+      yum: name="{{server}}" state=present
+    - name: server httpd start
+      service: name="{{server}}" state=stopped
+    - name: print my name
+      #command: echo 'manoj'
+      #register: output
+      command: echo '{{ansible_memfree_md}}'
+      register: output
+    - name: debug
+      #debug: var=output
+      debug: var=output.stdout
+

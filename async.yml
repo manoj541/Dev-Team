@@ -1,0 +1,9 @@
+---
+- hosts: all
+  become: yes
+  tasks: 
+   - name: java installing
+     yum: name=java state=present
+     async: 300
+     poll: 5
+

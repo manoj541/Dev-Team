@@ -1,0 +1,14 @@
+---
+- hosts: server
+  become: yes
+  tasks:
+    - name: Install apache2
+      apt: name=apache2 state=present
+      when: ansible_os_family == "Debian"
+    - name: Install Httpd
+      yum: name=httpd state=absent
+      when: ansible_os_family == "RedHat"
+    - name: print numbers
+      command: echo {{item}}
+      with_items: [0,2,4,6,8,10]
+      when: item > 5   
